@@ -1,5 +1,5 @@
-import React from 'react';
 import './index.scss';
+import React from 'react';
 import { useTelegram } from './hooks/useTelegram';
 import Header from './components/Header';
 

@@ -1,9 +1,10 @@
 import React from 'react';
+import styles from 'Button.module.scss';
 
-const Button = (props) => {
+const Button = () => {
   return (
     <div>
-      <button {...props} className={'button' + props.className} />
+      <button {...props} className={styles.button} />
     </div>
   );
 };
