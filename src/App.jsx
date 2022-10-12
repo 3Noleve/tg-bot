@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.scss';
 import { useTelegram } from './hooks/useTelegram';
+import Header from './components/Header';
 
 function App() {
   const { onToggleButton, tg } = useTelegram();
@@ -11,6 +12,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <button onClick={onToggleButton}>Toggle</button>
     </div>
   );
