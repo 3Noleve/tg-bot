@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductItem from '../ProductItem';
 import styles from './ProductList.module.scss';
-import { tg } from '../../hooks/useTelegram';
+import { useTelegram } from '../../hooks/useTelegram';
 
 const products = [
   { id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые' },
@@ -16,6 +16,7 @@ const products = [
 
 const ProductList = () => {
   const [addedItems, setAddedItems] = React.useState([]);
+  const { tg } = useTelegram();
 
   const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
