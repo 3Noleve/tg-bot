@@ -9,6 +9,23 @@ const Form = () => {
 
   const { tg } = useTelegram();
 
+  const onSendData = React.useCallback(() => {
+    const data = {
+      country,
+      street,
+      subject,
+    };
+
+    tg.sendData(JSON.stringify(data));
+  }, []);
+
+  React.useEffect(() => {
+    tg.onEvent('mainButtonClicked', onSendData);
+    return () => {
+      tg.offEvent('mainButtonClicked', onSendData);
+    };
+  }, []);
+
   React.useEffect(() => {
     tg.MainButton.setParams({
       text: 'Отправить Данные',
@@ -46,6 +63,7 @@ const Form = () => {
         value={country}
         onChange={onChangeCountry}
       />
+
       <input
         className={styles.input}
         type="text"
