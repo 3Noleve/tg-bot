@@ -2,13 +2,13 @@ import React from 'react';
 import Button from '../Button';
 import styles from './ProductItem.module.scss';
 
-const ProductItem = ({ product, className, onAdd }) => {
+const ProductItem = ({ product, onAdd }) => {
   const onAddHandler = () => {
     onAdd(product);
   };
 
   return (
-    <div className={styles.product + className}>
+    <div className={styles.product}>
       <div className={styles.img} />
       <div className={styles.title}>{product.title}</div>
       <div className={styles.description}>{product.description}</div>
