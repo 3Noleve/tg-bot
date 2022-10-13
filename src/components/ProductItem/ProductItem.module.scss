@@ -4,20 +4,20 @@
   border: 1px solid var(--tg-theme-button-color);
   padding: 15px;
   width: 170px;
-}
 
-.img {
-  width: 100%;
-  background: lightgray;
-  height: 100px;
-  margin: 0 auto;
-  background: var(--tg-theme-button-color);
-}
+  .img {
+    width: 100%;
+    background: lightgray;
+    height: 100px;
+    margin: 0 auto;
+    background: var(--tg-theme-button-color);
+  }
 
-.description {
-  font-size: 0.8em;
-}
+  .description {
+    font-size: 0.8em;
+  }
 
-.addBtn {
-  width: 100%;
+  .addBtn {
+    width: 100%;
+  }
 }
