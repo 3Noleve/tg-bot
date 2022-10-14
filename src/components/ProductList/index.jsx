@@ -3,6 +3,7 @@ import ProductItem from '../ProductItem';
 import styles from './ProductList.module.scss';
 import { useTelegram } from '../../hooks/useTelegram';
 
+// Массив Продуктов
 const products = [
   { id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые' },
   { id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая' },
@@ -16,7 +17,34 @@ const products = [
 
 const ProductList = () => {
   const [addedItems, setAddedItems] = React.useState([]);
-  const { tg } = useTelegram();
+  const { tg, queryId } = useTelegram();
+
+  // отправляем данные && fetch запрос
+
+  const onSendData = React.useCallback(() => {
+    const data = {
+      products: addedItems,
+      totalPrice: getTotalPrice(addedItems),
+      queryId,
+    };
+
+    fetch('http://127.0.0.1:5173/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+  }, []);
+
+  React.useEffect(() => {
+    tg.onEvent('mainButtonClicked', onSendData);
+    return () => {
+      tg.offEvent('mainButtonClicked', onSendData);
+    };
+  }, [onSendData]);
+
+  //
 
   const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
