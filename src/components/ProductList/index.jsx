@@ -28,14 +28,14 @@ const ProductList = () => {
       queryId,
     };
 
-    fetch('http://80.93.191.74:8000/web_data', {
+    fetch('http://80.93.191.74:8000/web-data', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     });
-  }, [addedItems]);
+  }, [addedItems, queryId]);
 
   React.useEffect(() => {
     tg.onEvent('mainButtonClicked', onSendData);
