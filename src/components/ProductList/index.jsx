@@ -28,7 +28,7 @@ const ProductList = () => {
       queryId,
     };
 
-    fetch('http://127.0.0.1:5173/', {
+    fetch('http://80.93.191.74:8000', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
