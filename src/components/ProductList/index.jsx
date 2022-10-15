@@ -15,6 +15,12 @@ const products = [
   { id: '8', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая' },
 ];
 
+const getTotalPrice = (items = []) => {
+  return items.reduce((acc, item) => {
+    return (acc += item.price);
+  }, 0);
+};
+
 const ProductList = () => {
   const [addedItems, setAddedItems] = React.useState([]);
   const { tg, queryId } = useTelegram();
@@ -45,12 +51,6 @@ const ProductList = () => {
   }, [onSendData]);
 
   //
-
-  const getTotalPrice = (items = []) => {
-    return items.reduce((acc, item) => {
-      return (acc += item.price);
-    }, 0);
-  };
 
   const onAdd = (product) => {
     const alreadyAdded = addedItems.find((item) => item.id === product.id);
